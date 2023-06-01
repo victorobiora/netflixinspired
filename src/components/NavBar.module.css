@@ -1,0 +1,33 @@
+.home {
+    color: #e50914;
+    margin-right: 2rem;
+}
+
+.nav{
+    height: 4rem;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    padding: 1rem 2rem;
+    padding-left: 3.5rem;
+    display: flex;
+    background-color: transparent;
+    justify-content: space-between;
+    color: #e5e5e5;
+    
+}
+
+.mainDeets{
+    display: flex;
+}
+
+
+.navBarDeets, .profileDeets{
+    display: flex;
+    padding-top: 0.4rem;
+}
+
+.navBarDeets li, .profileDeets * {
+    margin: 0 0.5rem;
+    list-style: none;
+}

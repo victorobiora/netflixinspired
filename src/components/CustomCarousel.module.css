@@ -1,0 +1,25 @@
+.parentContainer {
+  height: 25%;
+  width: 100%;
+  bottom: 4rem;
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.parentContainer h2 {
+   margin-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  overflow-y: hidden;
+}
+
+.container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #e50914;
+  border-radius: 0.6rem;
+}
