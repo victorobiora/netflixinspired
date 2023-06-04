@@ -49,7 +49,7 @@ const dummyData = [
 export default function CustomCarousel(props) {
   return (
     <div className={classes.parentContainer}>
-      <h2>My List</h2>
+      <h2>{props.carouselName}</h2>
       <div className={classes.container}>
         {dummyData.map((item) => {
           return (
@@ -57,6 +57,7 @@ export default function CustomCarousel(props) {
               name={item.name}
               imageSrc={item.imageSrc}
               id={item.id}
+              key={item.id}
             />
           );
         })}

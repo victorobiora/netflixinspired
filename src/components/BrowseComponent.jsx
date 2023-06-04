@@ -2,6 +2,7 @@ import classes from "./BrowseComponent.module.css";
 import NavBar from "./NavBar";
 import FeatureMovie from "./FeatureMovie";
 import CustomCarousel from "./CustomCarousel";
+import Footer from "./footer";
 
 const BrowseComponent = (props) => {
   const featureDetails = {
@@ -17,7 +18,10 @@ const BrowseComponent = (props) => {
     <div className={classes.page}>
       <NavBar signedInName="vic" />
       <FeatureMovie details = {featureDetails} />
-      <CustomCarousel />
+      <CustomCarousel carouselName='My List'/>
+      <CustomCarousel carouselName='Highest rated'/>
+      <CustomCarousel carouselName='Stuff you might Like'/>
+      <Footer/>
     </div>
   );
 };
