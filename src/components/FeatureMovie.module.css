@@ -1,34 +1,48 @@
 .featureContainer {
-    height: 90%;
-    width: 100;
-    background-size: cover; 
+  height: 90%;
+  width: 100;
+  background-size: cover;
 }
 
 .featureDetails {
-    position: relative;
-    top: 30%;
-    width: 30%;
-    line-height: 1.5rem;
-    padding-left: 3.5rem;
-    font-weight: inherit;
+  position: relative;
+  top: 30%;
+  width: 30%;
+  line-height: 1.5rem;
+  padding-left: 3.5rem;
+  font-weight: inherit;
 }
 
-.buttons button{
-     height: 2.5rem;
-     width: 8rem;
-     margin-right: 0.6rem;
-     margin-top: 1rem;
-     font-weight: bold;
-     border-radius: 0.5rem;
-     border-color: transparent;
-     cursor: pointer;
+.buttons button {
+  height: 2.5rem;
+  width: 8rem;
+  margin-right: 0.6rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border-color: transparent;
+  cursor: pointer;
 }
 
 .buttons button:hover {
-    background-color: rgb(177, 171, 171);
+  background-color: rgb(177, 171, 171);
 }
 
 .moreInfo {
-   background-color: grey;
-   color: white;
+  background-color: grey;
+  color: white;
+}
+
+.featureRating {
+  height: 30%;
+  width: 23%;
+  border: 3px solid black;
+  position: relative;
+  left: 40rem;
+}
+
+.featureRating img {
+
+    height: 100%;
+    max-width: 100%;
 }

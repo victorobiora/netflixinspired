@@ -22,7 +22,6 @@ const FeatureMovie = ({ details }) => {
           </button>
         </div>
       </div>
-      <div className={classes.featureRating}></div>
     </section>
   );
 };
