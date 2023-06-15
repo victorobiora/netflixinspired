@@ -1,9 +1,30 @@
 import Link from "next/link";
 import classes from "./NavBar.module.css";
+import { useState, useEffect } from "react";
 
 const NavBar = (props) => {
+
+  const [navScroll, setNavScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      console.log(isScrolled)
+      setNavScroll(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const joinedClasses = `${classes.nav} ${classes.scrolled}`
+
+
   return (
-    <section className={classes.nav}>
+    <section className={navScroll ? joinedClasses : classes.nav}>
       <div className={classes.mainDeets}>
         <Link href="/" className={classes.home}>
           <h1>NETFLIX</h1>

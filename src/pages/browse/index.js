@@ -1,5 +1,50 @@
 import BrowseComponent from "@/components/BrowseComponent";
 import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { listActions } from "@/store/nStore";
+
+
+const browsePage = (props) => {
+  const dispatch = useDispatch()
+
+  
+  useEffect(()=> {
+  //Here, we format the data gotten from the http calls and add the hasBeenAdded feature
+ //to all movies and shows to help us dynamically add and remove items from lists
+ //so user can see too. We update the redux store with said data
+ 
+ const fetchedStoreCategories = [
+  props.topRated,
+  props.popular,
+  props.trendingTv,
+];
+
+  const formattedStoreCategories = fetchedStoreCategories.map(category => {
+    
+    const formatArrayResults = category.results.map(el => {
+      return {
+        ...el,
+        hasBeenAdded: false
+      }
+    })
+
+    return {
+      ...category,
+      results: formatArrayResults
+    }
+  });
+
+  dispatch(listActions.addToFetchedLists(formattedStoreCategories))
+
+
+  
+  }, [])
+
+  return <BrowseComponent featured={props.featured} />;
+};
+
+export default browsePage;
 
 export const options = (url, region = "US", page = "2") => {
   const accessToken = process.env.MY_API_TOKEN;
@@ -24,13 +69,6 @@ export const options = (url, region = "US", page = "2") => {
   };
 };
 
-const browsePage = (props) => {
-  console.log(props.trendingTv);
-
-  return <BrowseComponent data={props} />;
-};
-
-export default browsePage;
 
 export const getStaticProps = async () => {
   //GETTING THE TOP RATED MOVIES AND MOST POPULAR AT THE MOMENT FROM API USING DATE CONSTRUCTOR
@@ -48,6 +86,14 @@ export const getStaticProps = async () => {
   const topRatedData = getTopRated.data;
   const trendingTVData = getTrendingTv.data
 
+    //HERE WE SELECT RANDOMLY A FEATURE FOR THE MAIN BACKGROUND
+    const featureDeets = () => {
+      const index = Math.round(Math.random() * 19);
+     const selected =  popularData.results[index]
+     return selected;
+    }
+  
+
   return {
     props: {
       topRated: {
@@ -61,7 +107,8 @@ export const getStaticProps = async () => {
       trendingTv: {
         name: 'Trending Television',
         ...trendingTVData
-      }
+      },
+      featured: featureDeets()
     },
   };
 };

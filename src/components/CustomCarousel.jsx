@@ -3,9 +3,9 @@ import classes from "./CustomCarousel.module.css";
 import Link from "next/link";
 
 export default function CustomCarousel({ carouselData }) {
-  console.log(carouselData.results);
 
   //title, id, poster_path, release_date, vote_average, overview, genre_ids
+  console.log(carouselData)
   return (
     <div className={classes.parentContainer}>
       <h2>{carouselData.name}</h2>
@@ -15,15 +15,17 @@ export default function CustomCarousel({ carouselData }) {
             return;
           } else {
             return (
-              <Link href={`${item.id}`} key={Math.random() * 400000} onMouse>
+              <Link href={`${item.id}`} key={Math.random() * 400000}>
                 <CarouselItem
+                  carouselCategory = {carouselData.name}
                   name={item.title || item.name}
-                  imageSrc={`https://www.themoviedb.org/t/p/original${item["backdrop_path"]}`}
+                  imageSrc={item["backdrop_path"] || item.imageSrc}
                   id={item.id}
-                  releaseDate={item["release_date"]}
-                  rating={item["vote_average"]}
-                  overViewText={item.overview}
-                  genreIDs={item["genre_ids"]}            
+                  releaseDate={item["release_date"] || item.releaseDate}
+                  rating={item["vote_average"] || item.rating }
+                  overViewText={item.overview || item.overViewText}
+                  genreIDs={item["genre_ids"] || item.genreIDs}
+                  hasBeenAdded = {item.hasBeenAdded || null}            
                 />
               </Link>
             );
