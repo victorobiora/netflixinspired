@@ -2,10 +2,10 @@ import CarouselItem from "./CarouselItem";
 import classes from "./CustomCarousel.module.css";
 import Link from "next/link";
 
-export default function CustomCarousel({ carouselData }) {
+export default function CustomCarousel({ carouselData, keyItem }) {
 
   //title, id, poster_path, release_date, vote_average, overview, genre_ids
-  console.log(carouselData)
+  console.log(carouselData, keyItem)
   return (
     <div className={classes.parentContainer}>
       <h2>{carouselData.name}</h2>
@@ -18,6 +18,7 @@ export default function CustomCarousel({ carouselData }) {
               <Link href={`${item.id}`} key={Math.random() * 400000}>
                 <CarouselItem
                   carouselCategory = {carouselData.name}
+                  keyItem = {keyItem}
                   name={item.title || item.name}
                   imageSrc={item["backdrop_path"] || item.imageSrc}
                   id={item.id}
@@ -25,7 +26,7 @@ export default function CustomCarousel({ carouselData }) {
                   rating={item["vote_average"] || item.rating }
                   overViewText={item.overview || item.overViewText}
                   genreIDs={item["genre_ids"] || item.genreIDs}
-                  hasBeenAdded = {item.hasBeenAdded || null}            
+                  hasBeenAdded = {item.hasBeenAdded}            
                 />
               </Link>
             );

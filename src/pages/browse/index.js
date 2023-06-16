@@ -48,7 +48,6 @@ export default browsePage;
 
 export const options = (url, region = "US", page = "2") => {
   const accessToken = process.env.MY_API_TOKEN;
-  console.log(accessToken);
 
   return {
     method: "GET",

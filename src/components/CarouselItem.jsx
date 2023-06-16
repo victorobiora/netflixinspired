@@ -9,17 +9,12 @@ const CarouselItem = (props) => {
 
   const toggleListHandler = (event) => {
     event.preventDefault();
-    if (props.hasBeenAdded !== null) {
-      console.log("i am here");
-      dispatch(listActions.removeFromList(props));
-    } else {
-      console.log("i was added");
+      console.log("i was clicked");
       setClicked(true);
-      dispatch(listActions.addToList(props));
-    }
-  };
+      dispatch(listActions.addOrRemoveFromList(props));
 
-  console.log(props.hasBeenAdded);
+  };
+console.log(props)
   return (
     <div className={classes.parentContainer}>
       <div className={classes.itemContainer}>
@@ -31,7 +26,6 @@ const CarouselItem = (props) => {
       <div className={classes.movieName}>{props.name}</div>
       {!clicked && (
         <div className={classes.addToList} onClick={toggleListHandler}>
-          {" "}
           {props.hasBeenAdded ? "Remove from List" : "Add to List"}
         </div>
       )}
