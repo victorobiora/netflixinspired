@@ -4,42 +4,37 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { listActions } from "@/store/nStore";
 
-
 const browsePage = (props) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  
-  useEffect(()=> {
-  //Here, we format the data gotten from the http calls and add the hasBeenAdded feature
- //to all movies and shows to help us dynamically add and remove items from lists
- //so user can see too. We update the redux store with said data
- 
- const fetchedStoreCategories = [
-  props.topRated,
-  props.popular,
-  props.trendingTv,
-];
+  useEffect(() => {
+    //Here, we format the data gotten from the http calls and add the hasBeenAdded feature
+    //to all movies and shows to help us dynamically add and remove items from lists
+    //so user can see too. We update the redux store with said data
 
-  const formattedStoreCategories = fetchedStoreCategories.map(category => {
-    
-    const formatArrayResults = category.results.map(el => {
+    const fetchedStoreCategories = [
+      props.topRated,
+      props.popular,
+      props.trendingTv,
+    ];
+    console.log(fetchedStoreCategories);
+    const formattedStoreCategories = fetchedStoreCategories.map((category) => {
+      const formatArrayResults = category.results.map((el) => {
+        return {
+          ...el,
+          hasBeenAdded: false,
+          originalCategoryName: category.categoryName,
+        };
+      });
+
       return {
-        ...el,
-        hasBeenAdded: false
-      }
-    })
+        ...category,
+        results: formatArrayResults,
+      };
+    });
 
-    return {
-      ...category,
-      results: formatArrayResults
-    }
-  });
-
-  dispatch(listActions.addToFetchedLists(formattedStoreCategories))
-
-
-  
-  }, [])
+    dispatch(listActions.addToFetchedLists(formattedStoreCategories));
+  }, []);
 
   return <BrowseComponent featured={props.featured} />;
 };
@@ -68,46 +63,50 @@ export const options = (url, region = "US", page = "2") => {
   };
 };
 
-
 export const getStaticProps = async () => {
   //GETTING THE TOP RATED MOVIES AND MOST POPULAR AT THE MOMENT FROM API USING DATE CONSTRUCTOR
-  
+
   const getTopRated = await axios.request(
     options("https://api.themoviedb.org/3/movie/top_rated")
   );
   const getPopular = await axios.request(
-    options(`https://api.themoviedb.org/3/discover/movie?primary_release_year=${new Date().getFullYear().toString()}`)
+    options(
+      `https://api.themoviedb.org/3/discover/movie?primary_release_year=${new Date()
+        .getFullYear()
+        .toString()}`
+    )
   );
 
-  const getTrendingTv = await axios.request(options(`https://api.themoviedb.org/3/discover/tv`))
+  const getTrendingTv = await axios.request(
+    options(`https://api.themoviedb.org/3/discover/tv`)
+  );
 
   const popularData = getPopular.data;
   const topRatedData = getTopRated.data;
-  const trendingTVData = getTrendingTv.data
+  const trendingTVData = getTrendingTv.data;
 
-    //HERE WE SELECT RANDOMLY A FEATURE FOR THE MAIN BACKGROUND
-    const featureDeets = () => {
-      const index = Math.round(Math.random() * 19);
-     const selected =  popularData.results[index]
-     return selected;
-    }
-  
+  //HERE WE SELECT RANDOMLY A FEATURE FOR THE MAIN BACKGROUND
+  const featureDeets = () => {
+    const index = Math.round(Math.random() * 19);
+    const selected = popularData.results[index];
+    return selected;
+  };
 
   return {
     props: {
       topRated: {
-        name: "Top Rated Movies",
+        categoryName: "Top Rated Movies",
         ...topRatedData,
       },
       popular: {
-        name: "Popular Right Now",
+        categoryName: "Popular Right Now",
         ...popularData,
       },
       trendingTv: {
-        name: 'Trending Television',
-        ...trendingTVData
+        categoryName: "Trending Television",
+        ...trendingTVData,
       },
-      featured: featureDeets()
+      featured: featureDeets(),
     },
   };
 };

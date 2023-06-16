@@ -8,6 +8,8 @@ const myList = createSlice({
       {
         name: "badgy",
         backdrop_path: "/jgGP3HxKUrYM7sPIFVH7L0k8Mmq.jpg",
+        carouselCategory: 'My List',
+        originalCategoryName: "My List",
         id: "hdfjd",
         release_date: "1998",
         vote_average: 2.4,
@@ -18,6 +20,8 @@ const myList = createSlice({
       {
         name: "badgy",
         backdrop_path: "/jgGP3HxKUrYM7sPIFVH7L0k8Mmq.jpg",
+        carouselCategory: 'My List',
+        originalCategoryName: "My List",
         id: "hdfjd",
         release_date: "1998",
         vote_average: 2.4,
@@ -44,15 +48,19 @@ const myList = createSlice({
             (el) => el.id !== state.selectedLists[index].id
           );
         }
-   //we then change the hasBeenAdded state from the fetchedLists
-   const selectedArrayIndex = state.fetchedLists.findIndex(
-    (el) => el.name === action.payload.carouselCategory
-  );
-  const itemToBeChangedIndex = state.fetchedLists[
-    selectedArrayIndex
-  ].results.findIndex((el) => el.id === action.payload.id);
-  //we then change the state
-  state.fetchedLists[selectedArrayIndex].results[itemToBeChangedIndex].hasBeenAdded = !state.fetchedLists[selectedArrayIndex].results[itemToBeChangedIndex].hasBeenAdded
+        //we then change the hasBeenAdded state from the fetchedLists
+        const selectedArrayIndex = state.fetchedLists.findIndex(
+          (el) => el.categoryName === action.payload.originalCategoryName
+        );
+        const itemToBeChangedIndex = state.fetchedLists[
+          selectedArrayIndex
+        ].results.findIndex((el) => el.id === action.payload.id);
+        //we then change the state
+        state.fetchedLists[selectedArrayIndex].results[
+          itemToBeChangedIndex
+        ].hasBeenAdded =
+          !state.fetchedLists[selectedArrayIndex].results[itemToBeChangedIndex]
+            .hasBeenAdded;
       } else {
         state.selectedLists.push({ ...action.payload, hasBeenAdded: true });
       }

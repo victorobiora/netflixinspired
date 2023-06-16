@@ -11,10 +11,11 @@ const CarouselItem = (props) => {
     event.preventDefault();
       console.log("i was clicked");
       setClicked(true);
+
       dispatch(listActions.addOrRemoveFromList(props));
 
   };
-console.log(props)
+
   return (
     <div className={classes.parentContainer}>
       <div className={classes.itemContainer}>
