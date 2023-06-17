@@ -1,10 +1,10 @@
 .parentContainer {
-  height: 30%;
+  height: 38%;
   width: 100%;
   bottom: 4rem;
   position: relative;
   padding-left: 3.5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   z-index: 1;
 }
 
@@ -14,8 +14,10 @@
 
 .container {
   display: flex;
-  overflow-y: hidden;
+  overflow-x: scroll;
   height: 100%;
+  position: relative;
+
 }
 
 .container a {
@@ -25,7 +27,7 @@
 }
 
 .container::-webkit-scrollbar {
-  height: 6px;
+  height: 10px;
 }
 
 .container::-webkit-scrollbar-thumb {
