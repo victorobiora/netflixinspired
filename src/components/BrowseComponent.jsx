@@ -9,19 +9,19 @@ const BrowseComponent = (props) => {
   const list = useSelector((state) => state.myList.selectedLists);
   const fetchedList = useSelector((state) => state.myList.fetchedLists);
 
-  const storeCategories = [...fetchedList, { categoryName: "My List", results: list }];
-
+  const storeCategories = [...fetchedList];
+  const picked = {categoryName: "My List", results: list}
   console.log(list)
   console.log(fetchedList)
   console.log(storeCategories);
 
   return (
     <div className={classes.page}>
-      <NavBar signedInName="vic" />
       <FeatureMovie deets={props.featured} />
       {storeCategories.map((el) => {
         return <CustomCarousel carouselData={el} key={el.categoryName} />;
       })}
+       <CustomCarousel carouselData={picked} key={picked.categoryName} />
       <Footer />
       <div>{process.env.NEXT_PUBLIC_MY_API_KEY}</div>
     </div>

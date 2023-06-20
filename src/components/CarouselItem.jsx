@@ -4,17 +4,48 @@ import { listActions } from "@/store/nStore";
 import { useState } from "react";
 
 const CarouselItem = (props) => {
-  const [clicked, setClicked] = useState(false);
   const [containerClass, setContainerClasses] = useState(
     classes.parentContainer
   );
+
   const dispatch = useDispatch();
+
+  const ticker = props.hasBeenAdded ? (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      data-name="Checkmark"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  ) : (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      data-name="Add"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M11 2V11H2V13H11V22H13V13H22V11H13V2H11Z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  );
 
   const toggleListHandler = (event) => {
     event.preventDefault();
-    console.log("i was clicked");
-    setClicked(true);
-
     dispatch(listActions.addOrRemoveFromList(props));
   };
 
@@ -28,7 +59,6 @@ const CarouselItem = (props) => {
       (prevState) => `${prevState} ${classes.expandContainer}`
     );
   };
-  //        {props.hasBeenAdded ? "Remove from List" : "Add to List"}
 
   return (
     <div
@@ -44,8 +74,8 @@ const CarouselItem = (props) => {
       </div>
       <div className={classes.movieName}>{props.name}</div>
       <div className={classes.doMoreContainer}>
-        <div className={`${classes.option} ${classes.playMovie}`}>
-          <svg
+      <div className={`${classes.option} ${classes.playMovie}`}>
+        <svg
             width="22"
             height="22"
             viewBox="0 0 22 22"
@@ -60,27 +90,12 @@ const CarouselItem = (props) => {
           </svg>
         </div>
         <div
-          className={`${classes.option} ${classes.toggleMyList}`}
-
+          className={`${classes.option} ${classes.toggleMyList} ${props.hasBeenAdded ? classes.addedToList : '' }`}
           onClick={toggleListHandler}
         >
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 22 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            data-name="Add"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M11 2V11H2V13H11V22H13V13H22V11H13V2H11Z"
-              fill="currentColor"
-            ></path>
-          </svg>
+          {ticker}
         </div>
-        <div className={`${classes.option} ${classes.favorite}`}>
+        <div className={`${classes.option} ${classes.favorite}  ${props.hasBeenAdded ? classes.addedToFav : '' }`}>
           <svg
             width="17"
             height="17"

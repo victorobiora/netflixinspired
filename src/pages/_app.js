@@ -1,10 +1,14 @@
-import '@/styles/globals.css'
-import { Provider } from 'react-redux'
-import store from '@/store/nStore'
+import "@/styles/globals.css";
+import { Provider } from "react-redux";
+import store from "@/store/nStore";
+import { Fragment } from "react";
+import NavBar from "@/components/NavBar";
 
 export default function App({ Component, pageProps }) {
-  return <Provider store={store}>
-    <Component {...pageProps} /> 
-  </Provider>
- 
+  return (
+    <Provider store={store}>
+      <NavBar signedInName="vic" />
+      <Component {...pageProps} />
+    </Provider>
+  );
 }

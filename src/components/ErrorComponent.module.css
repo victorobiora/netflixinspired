@@ -1,0 +1,14 @@
+.errorSection {
+    height: 100%;
+    width: 100%;
+}
+
+.errorText {
+    margin-top: 5rem;
+    color: whitesmoke;
+    padding: auto;
+    text-align: center;
+    width: 100%;
+    font-size: larger;
+    font-style: italic;
+}

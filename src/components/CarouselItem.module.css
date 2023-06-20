@@ -41,6 +41,20 @@
   position: relative;
 }
 
+
+.doMoreContainer div:hover::after {
+  width: max-content;
+  color: #141414;
+  position: absolute;
+  top: 100%;
+  left: -1rem;
+  padding: 1px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
 .option{
   width: 2.5rem;
   height: 2.5rem;
@@ -73,6 +87,17 @@
   content: "Add To List";
 }
 
+
+.toggleMyList.addedToList:hover::after {
+  content: "Added To List";
+}
+
+.toggleMyList.addedToFav:hover::after {
+  content: "Added To Favorites";
+}
+
+
+
 .favorite {
    position: absolute;
    right: 0;
@@ -86,16 +111,3 @@
 .favorite:hover::after {
   content: "Add To Favorites";
 }
-
-.doMoreContainer div:hover::after {
-  width: max-content;
-  color: #141414;
-  position: absolute;
-  top: 100%;
-  left: -1rem;
-  padding: 5px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-

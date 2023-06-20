@@ -5,7 +5,7 @@ const myList = createSlice({
   initialState: {
     fetchedLists: [],
     selectedLists: [
-      {
+   /*   {
         name: "badgy",
         backdrop_path: "/jgGP3HxKUrYM7sPIFVH7L0k8Mmq.jpg",
         carouselCategory: 'My List',
@@ -28,12 +28,15 @@ const myList = createSlice({
         overview: "lorem ipsum",
         genre_ids: [122, 3, 45],
         hasBeenAdded: true,
-      },
+      },*/
     ],
   },
   reducers: {
     addToFetchedLists(state, action) {
       state.fetchedLists = action.payload;
+    },
+    consoleI(state, action){
+      console.log('vbdnvd')
     },
     addOrRemoveFromList(state, action) {
       if (state.selectedLists.length > 0) {
@@ -48,6 +51,10 @@ const myList = createSlice({
             (el) => el.id !== state.selectedLists[index].id
           );
         }
+      
+      } else {
+        state.selectedLists.push({ ...action.payload, hasBeenAdded: true });
+      }
         //we then change the hasBeenAdded state from the fetchedLists
         const selectedArrayIndex = state.fetchedLists.findIndex(
           (el) => el.categoryName === action.payload.originalCategoryName
@@ -61,15 +68,7 @@ const myList = createSlice({
         ].hasBeenAdded =
           !state.fetchedLists[selectedArrayIndex].results[itemToBeChangedIndex]
             .hasBeenAdded;
-      } else {
-        state.selectedLists.push({ ...action.payload, hasBeenAdded: true });
-      }
-    } /*,
-    removeFromList(state, action) {
-      state.selectedLists = state.selectedLists.filter(
-        (el) => el.id !== action.payload.id
-      );
-    },*/,
+    } 
   },
 });
 
