@@ -5,11 +5,11 @@ import { Fragment } from "react";
 import ErrorComponent from "@/components/ErrorComponent";
 
 const searchPage = (props) => {
-  console.log(props);
+
   return (
     <Fragment>
       {props.error && <ErrorComponent error={props.error} />}
-      {props.data && <div>njudf</div>}
+   {props.data && <SearchResults />}
     </Fragment>
   );
 };
@@ -27,6 +27,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const searchData = context.params.searchQuery;
+  
   try {
     const getResults = await axios.request(
       options(`https://api.themoviedb.org/3/search/tv?query=${searchData}`)

@@ -7,7 +7,7 @@
     height: 4rem;
     width: 100%;
     position: fixed;
-    z-index: 3;
+    z-index: 30000;
     top: 0;
     padding: 1rem 2rem;
     padding-left: 3.5rem;
@@ -15,11 +15,10 @@
     background-color: transparent;
     justify-content: space-between;
     color: #e5e5e5;
-    
 }
 
 .nav.scrolled{
-    background-color: grey;
+    background-color: #141414;
 }
 
 .mainDeets{

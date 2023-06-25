@@ -1,11 +1,16 @@
 .parentContainer {
-  height: 45%;
+  height: 40%;
   width: 100%;
   bottom: 4rem;
   position: relative;
   padding-left: 3.5rem;
   margin-bottom: 4rem;
   z-index: 1;
+}
+
+.addContainerHeight {
+  height: 100%;
+  margin-top: 8rem;
 }
 
 .parentContainer h2 {
@@ -17,20 +22,25 @@
   overflow-x: scroll;
   height: 100%;
   position: relative;
+}
 
+.removeContainerWrap {
+  flex-wrap: wrap;
 }
 
 .container a {
-  height: 80%;
+
   min-width: 20%;
   width: 20%;
 }
 
 .container::-webkit-scrollbar {
   height: 10px;
+  width: 0;
 }
 
 .container::-webkit-scrollbar-thumb {
+
   background-color: #e50914;
   border-radius: 0.6rem;
 }

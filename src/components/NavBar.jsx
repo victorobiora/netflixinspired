@@ -43,7 +43,7 @@ const NavBar = (props) => {
           <Link href='/'>New & Popular</Link>
           </li>
           <li>
-          <Link href='/'>My List</Link>
+          <Link href='/browse/my-list'>My List</Link>
           </li>
           <li>
             <Link href='/'>Browse By Language</Link>
@@ -51,7 +51,7 @@ const NavBar = (props) => {
         </ul>
       </div>
       <div className={classes.profileDeets}>
-        <Link href='/'>Search</Link>
+        <Link href='/search/thuin'>Search</Link>
         <Link href='/'>{props.signedInName}</Link>
         <Link href='/'>Notifs</Link>
         <Link href='/'> Profile</Link>

@@ -2,13 +2,21 @@ import CarouselItem from "./CarouselItem";
 import classes from "./CustomCarousel.module.css";
 import Link from "next/link";
 
-export default function CustomCarousel({ carouselData }) {
+export default function CustomCarousel({ carouselData, isSearch }) {
   //title, id, poster_path, release_date, vote_average, overview, genre_ids
 
   return (
-    <div className={classes.parentContainer}>
+    <div
+      className={`${classes.parentContainer} ${
+        isSearch ? classes.addContainerHeight :  ""
+      }`}
+    >
       <h2>{carouselData.categoryName}</h2>
-      <div className={classes.container}>
+      <div
+        className={`${classes.container} ${
+          isSearch && classes.removeContainerWrap
+        }`}
+      >
         {carouselData.results.map((item) => {
           if (item["backdrop_path"] === null) {
             return;

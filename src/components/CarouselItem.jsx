@@ -54,7 +54,7 @@ const CarouselItem = (props) => {
   };
 
   const increaseHandler = (el) => {
-    console.log(el.target);
+    console.log(props.hasBeenAdded)
     setContainerClasses(
       (prevState) => `${prevState} ${classes.expandContainer}`
     );

@@ -3,37 +3,42 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { listActions } from "@/store/nStore";
+import { useSelector } from "react-redux";
 
 const browsePage = (props) => {
   const dispatch = useDispatch();
+  const fetchedList = useSelector((state) => state.myList.fetchedLists);
 
   useEffect(() => {
     //Here, we format the data gotten from the http calls and add the hasBeenAdded feature
     //to all movies and shows to help us dynamically add and remove items from lists
     //so user can see too. We update the redux store with said data
+    if (fetchedList.length === 0) {
+      const fetchedStoreCategories = [
+        props.topRated,
+        props.popular,
+        props.trendingTv,
+      ];
+      console.log(fetchedStoreCategories);
+      const formattedStoreCategories = fetchedStoreCategories.map(
+        (category) => {
+          const formatArrayResults = category.results.map((el) => {
+            return {
+              ...el,
+              hasBeenAdded: false,
+              originalCategoryName: category.categoryName,
+            };
+          });
 
-    const fetchedStoreCategories = [
-      props.topRated,
-      props.popular,
-      props.trendingTv,
-    ];
-    console.log(fetchedStoreCategories);
-    const formattedStoreCategories = fetchedStoreCategories.map((category) => {
-      const formatArrayResults = category.results.map((el) => {
-        return {
-          ...el,
-          hasBeenAdded: false,
-          originalCategoryName: category.categoryName,
-        };
-      });
+          return {
+            ...category,
+            results: formatArrayResults,
+          };
+        }
+      );
 
-      return {
-        ...category,
-        results: formatArrayResults,
-      };
-    });
-
-    dispatch(listActions.addToFetchedLists(formattedStoreCategories));
+      dispatch(listActions.addToFetchedLists(formattedStoreCategories));
+    }
   }, []);
 
   return <BrowseComponent featured={props.featured} />;
