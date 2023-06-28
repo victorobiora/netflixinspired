@@ -1,6 +1,8 @@
+import HomePage from "@/components/home/HomePage";
+
 export default function Home() {
 
   return (
-    <div>still to be built!</div>
+    <HomePage/>
   );
 }
