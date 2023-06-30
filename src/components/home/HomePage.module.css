@@ -4,3 +4,33 @@
     margin: 0;
     padding: 0;
 }
+
+.itemText {
+  margin: 0 2rem;
+  width: 50%;
+  padding-top: 10%;
+}
+
+.itemText h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.itemText p {
+    margin: 1rem 0 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+
+
+.imageDiv {
+    height: 25rem;
+    width: 40%;
+}
+
+.imageDiv img {
+    height: 100%;
+    width: 100%;
+}

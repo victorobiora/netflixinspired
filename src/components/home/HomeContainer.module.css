@@ -1,0 +1,8 @@
+.container {
+    width: 100vw;
+    border-top: 10px solid rgb(58, 56, 56);
+    background-color: black;
+    text-align: center;
+    display: flex;
+    padding: 3rem 6rem;
+}
