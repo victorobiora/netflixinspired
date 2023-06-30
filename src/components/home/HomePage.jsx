@@ -8,16 +8,6 @@ const HomePage = (props) => {
     <main className={styles.Homepage}>
       <RegisterSection />
       <HomeContainer>
-        <div className={styles.itemText}>
-          <h2>Enjoy on your TV</h2>
-          <p>
-            Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
-            players, and more.
-          </p>
-        </div>
-        <div className={styles.imageDiv}></div>
-      </HomeContainer>
-      <HomeContainer>
         <div className={styles.imageDiv}>
           <img
             alt="download"
@@ -28,6 +18,16 @@ const HomePage = (props) => {
           <h2>Download your shows to watch offline</h2>
           <p>Save your favorites easily and always have something to watch.</p>
         </div>
+      </HomeContainer>
+      <HomeContainer>
+        <div className={styles.itemText}>
+          <h2>Enjoy on your TV</h2>
+          <p>
+            Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
+            players, and more.
+          </p>
+        </div>
+        <div className={styles.imageDiv}></div>
       </HomeContainer>
       <HomeContainer>
         <div className={styles.itemText}>

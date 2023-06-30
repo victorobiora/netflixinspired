@@ -39,7 +39,7 @@ const HomeFooter = (props) => {
           <Link href="/"> Legal Notices</Link>
         </li>
         <li>
-          <Link href="/">Aaccount </Link>
+          <Link href="/">Account </Link>
         </li>
         <li>
           <Link href="/"> Jobs </Link>
