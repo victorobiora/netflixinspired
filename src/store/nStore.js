@@ -1,42 +1,26 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+const createEmail = createSlice({
+  name: "email",
+  initialState: {
+    setEmail: "",
+  },
+  reducers: {
+    addEmail(state, action){
+      state.setEmail = action.payload
+    }
+  },
+});
+
 const myList = createSlice({
   name: "myList",
   initialState: {
     fetchedLists: [],
-    selectedLists: [
-   /*   {
-        name: "badgy",
-        backdrop_path: "/jgGP3HxKUrYM7sPIFVH7L0k8Mmq.jpg",
-        carouselCategory: 'My List',
-        originalCategoryName: "Trending Television",
-        id: "hdfjd",
-        release_date: "1998",
-        vote_average: 2.4,
-        overview: "lorem ipsum",
-        genre_ids: [122, 3, 45],
-        hasBeenAdded: true,
-      },
-      {
-        name: "badgy",
-        backdrop_path: "/jgGP3HxKUrYM7sPIFVH7L0k8Mmq.jpg",
-        carouselCategory: 'My List',
-        originalCategoryName: "Trending Television",
-        id: "hdfjd",
-        release_date: "1998",
-        vote_average: 2.4,
-        overview: "lorem ipsum",
-        genre_ids: [122, 3, 45],
-        hasBeenAdded: true,
-      },*/
-    ],
+    selectedLists: [],
   },
   reducers: {
     addToFetchedLists(state, action) {
       state.fetchedLists = action.payload;
-    },
-    consoleI(state, action){
-      console.log('vbdnvd')
     },
     addOrRemoveFromList(state, action) {
       if (state.selectedLists.length > 0) {
@@ -51,32 +35,33 @@ const myList = createSlice({
             (el) => el.id !== state.selectedLists[index].id
           );
         }
-      
       } else {
         state.selectedLists.push({ ...action.payload, hasBeenAdded: true });
       }
-        //we then change the hasBeenAdded state from the fetchedLists
-        const selectedArrayIndex = state.fetchedLists.findIndex(
-          (el) => el.categoryName === action.payload.originalCategoryName
-        );
-        const itemToBeChangedIndex = state.fetchedLists[
-          selectedArrayIndex
-        ].results.findIndex((el) => el.id === action.payload.id);
-        //we then change the state
-        state.fetchedLists[selectedArrayIndex].results[
-          itemToBeChangedIndex
-        ].hasBeenAdded =
-          !state.fetchedLists[selectedArrayIndex].results[itemToBeChangedIndex]
-            .hasBeenAdded;
-    } 
+      //we then change the hasBeenAdded state from the fetchedLists
+      const selectedArrayIndex = state.fetchedLists.findIndex(
+        (el) => el.categoryName === action.payload.originalCategoryName
+      );
+      const itemToBeChangedIndex = state.fetchedLists[
+        selectedArrayIndex
+      ].results.findIndex((el) => el.id === action.payload.id);
+      //we then change the state
+      state.fetchedLists[selectedArrayIndex].results[
+        itemToBeChangedIndex
+      ].hasBeenAdded =
+        !state.fetchedLists[selectedArrayIndex].results[itemToBeChangedIndex]
+          .hasBeenAdded;
+    },
   },
 });
 
 export const listActions = myList.actions;
+export const emailActions = createEmail.actions;
 
 const store = configureStore({
   reducer: {
     myList: myList.reducer,
+    email: createEmail.reducer
   },
 });
 
