@@ -1,6 +1,5 @@
 .stepContainer {
-  position: relative;
-  top: 12rem;
+  margin-top: 12rem;
   max-width: 340px;
   text-align: center;
 }
