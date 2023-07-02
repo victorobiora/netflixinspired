@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import classes from "./RegForm.module.css";
 import { useRouter } from "next/router";
 import { TailSpin } from "react-loader-spinner";
+import { useSelector } from "react-redux";
 
 export const errorElement = (text, exported=false) => {
   return (
@@ -17,8 +18,8 @@ export const errorElement = (text, exported=false) => {
         aria-hidden="true"
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M13.5 8C13.5 11.0376 11.0376 13.5 8 13.5C4.96243 13.5 2.5 11.0376 2.5 8C2.5 4.96243 4.96243 2.5 8 2.5C11.0376 2.5 13.5 4.96243 13.5 8ZM15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8ZM4.96967 6.03033L6.93934 8L4.96967 9.96967L6.03033 11.0303L8 9.06066L9.96967 11.0303L11.0303 9.96967L9.06066 8L11.0303 6.03033L9.96967 4.96967L8 6.93934L6.03033 4.96967L4.96967 6.03033Z"
           fill="currentColor"
         ></path>
@@ -30,6 +31,8 @@ export const errorElement = (text, exported=false) => {
 
 
 const RegForm = (props) => {
+  const passwordValue = useRef()
+  const [emailValue, setEmailValue] = useState(useSelector(state => state.email.setEmail))
   const Router = useRouter();
   const [emailCorrect, setEmailCorrect] = useState({
     state: null,
@@ -42,15 +45,30 @@ const RegForm = (props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   let totalState = passwordCorrect.state && emailCorrect.state;
 
-  const submitHandler = (el) => {
+  const submitHandler = async (el) => {
     el.preventDefault();
     setIsSubmitting(true)
+    console.log({
+      email: emailValue,
+      password: passwordValue.current.value
+    })
+    
+    const registerNewAccount = await fetch('/api/registernew', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: emailValue,
+        password: passwordValue.current.value
+      })
+    })
+
+   const returnData = await registerNewAccount.json();
+    console.log(returnData)
   };
 
   const checkEmailHandler = (el) => {
     const val = el.target.value;
 
-    console.log(val.lastIndexOf("."), val.length);
+    setEmailValue(val)
     // the second argument in the includes method asks from javascript should start counting from
 
     if (val.length <= 4) {
@@ -120,12 +138,14 @@ const RegForm = (props) => {
             type="email"
             name="email"
             placeholder="Email"
+            value={emailValue}
             onChange={checkEmailHandler}
           />
           {emailCorrect.state === false && errorElement(emailCorrect.message)}
           <input
             type="password"
             name="password"
+            ref={passwordValue}
             placeholder="Add a Password"
             onChange={checkPasswordHandler}
           />
