@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { listActions } from "@/store/nStore";
 import { useSelector } from "react-redux";
 
-const browsePage = (props) => {
+const browsePage = (props = null) => {
   const dispatch = useDispatch();
   const fetchedList = useSelector((state) => state.myList.fetchedLists);
 
