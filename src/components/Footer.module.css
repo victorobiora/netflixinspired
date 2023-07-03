@@ -10,7 +10,6 @@
 
 .footerLinks {
     display: flex;
-    align-items: flex-start;
     flex-wrap: wrap;
 }
 
@@ -57,3 +56,16 @@
 .copyright {
     margin-bottom: 2rem;
 }
+
+@media only screen and (max-width: 767px) {
+    .footer{
+        padding: 0;
+        left: 5%;
+    }
+
+    .footerLinks {
+        flex-direction: column;
+        height: 19rem;
+    }
+  }
+  

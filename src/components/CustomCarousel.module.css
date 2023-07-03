@@ -44,3 +44,18 @@
   background-color: #e50914;
   border-radius: 0.6rem;
 }
+
+@media only screen and (max-width: 767px) {
+  .container a{
+    min-width: 48%;
+  }
+
+  .parentContainer {
+    margin-bottom: 0;
+    padding-left: 1rem;
+  }
+
+  .container{
+    height: fit-content;
+  }
+}

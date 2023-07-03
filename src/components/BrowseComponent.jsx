@@ -23,7 +23,6 @@ const BrowseComponent = (props) => {
       })}
        <CustomCarousel carouselData={picked} key={picked.categoryName} />
       <Footer />
-      <div>{process.env.NEXT_PUBLIC_MY_API_KEY}</div>
     </div>
   );
 };

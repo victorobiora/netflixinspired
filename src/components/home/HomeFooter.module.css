@@ -43,3 +43,19 @@
     text-decoration: underline;
  
 }
+
+@media only screen and (max-width: 767px) {
+   .footer {
+    max-width: calc(100% - 3rem);
+    padding-left: 0;
+   }
+
+   .listFooterItems{
+    height: 19rem;
+   }
+
+   .footer li {
+    margin-right: 0;
+   }
+  }
+  

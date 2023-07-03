@@ -46,7 +46,7 @@ const NavBar = (props) => {
           <Link href='/browse/my-list'>My List</Link>
           </li>
           <li>
-            <Link href='/'>Browse By Language</Link>
+            <Link href='/browse'>Browse</Link>
           </li>
         </ul>
       </div>
