@@ -21,7 +21,15 @@ const NavBar = (props) => {
   }, []);
 
   const joinedClasses = `${classes.nav} ${classes.scrolled}`
-
+/* <li>
+          <Link href='/'>Movies</Link>
+          </li>
+          <li>
+          <Link href='/'>Tv Shows</Link>
+          </li>
+          <li>
+          <Link href='/'>New & Popular</Link>
+          </li>*/
 
   return (
     <section className={navScroll ? joinedClasses : classes.nav}>
@@ -33,15 +41,7 @@ const NavBar = (props) => {
           <li>
           <Link href='/'>Home</Link>
           </li>
-          <li>
-          <Link href='/'>Movies</Link>
-          </li>
-          <li>
-          <Link href='/'>Tv Shows</Link>
-          </li>
-          <li>
-          <Link href='/'>New & Popular</Link>
-          </li>
+         
           <li>
           <Link href='/browse/my-list'>My List</Link>
           </li>
