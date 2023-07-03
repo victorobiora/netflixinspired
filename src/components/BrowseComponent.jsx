@@ -1,7 +1,7 @@
 import classes from "./BrowseComponent.module.css";
 import FeatureMovie from "./FeatureMovie";
 import CustomCarousel from "./CustomCarousel";
-import Footer from "./footer";
+import Footer from "./Footer";
 import { useSelector } from "react-redux";
 
 const BrowseComponent = (props) => {
