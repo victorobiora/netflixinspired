@@ -1,8 +1,7 @@
 import classes from "./BrowseComponent.module.css";
-import NavBar from "./NavBar";
 import FeatureMovie from "./FeatureMovie";
 import CustomCarousel from "./CustomCarousel";
-import Footer from "./footer";
+
 import { useSelector } from "react-redux";
 
 const BrowseComponent = (props) => {
@@ -22,7 +21,7 @@ const BrowseComponent = (props) => {
         return <CustomCarousel carouselData={el} key={el.categoryName} />;
       })}
        <CustomCarousel carouselData={picked} key={picked.categoryName} />
-      <Footer />
+
     </div>
   );
 };
