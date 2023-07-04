@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { TailSpin } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 
+
 export const errorElement = (text, exported=false) => {
   return (
     <div className={`${exported ? classes.exportedErrorNotif : classes.errorNotif }`}>
@@ -55,6 +56,7 @@ const RegForm = (props) => {
     
     const registerNewAccount = await fetch('/api/registernew', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email: emailValue,
         password: passwordValue.current.value

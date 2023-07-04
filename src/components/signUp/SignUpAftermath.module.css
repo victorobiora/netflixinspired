@@ -1,0 +1,24 @@
+.container {
+    margin-top: 12rem;
+    max-width: 400px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .container h2 {
+    max-width: 300px;
+    font-size: 1.2rem;
+  }
+
+  .container a {
+    margin-left: 5rem;
+    margin-top: 2rem;
+    display: block;
+    height: 3.2rem;
+    width: 10rem;
+    background-color: red;
+    border-color: none;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: rgb(255, 255, 255);
+  }
