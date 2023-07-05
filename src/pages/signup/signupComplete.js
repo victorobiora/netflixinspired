@@ -1,9 +1,9 @@
-import SignupComplete from "@/components/signUp/SignUpAftermath";
+import SignUpAftermath from "@/components/signUp/SignUpAftermath";
 
 const signupComplete = () => {
   return (
     <section id="signup-page">
-     <SignupComplete successful={true}/>
+     <SignUpAftermath successful={true}/>
     </section>
   ); 
 };

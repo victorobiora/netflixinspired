@@ -11,14 +11,21 @@
   }
 
   .container a {
-    margin-left: 5rem;
     margin-top: 2rem;
     display: block;
     height: 3.2rem;
-    width: 10rem;
     background-color: red;
     border-color: none;
     border-radius: 0.5rem;
     padding: 1rem;
     color: rgb(255, 255, 255);
+  }
+
+  .progressImage {
+    height: 20%;
+  }
+
+  .progressImage *{
+     height: 100%;
+     width: 100%;
   }

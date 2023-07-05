@@ -65,6 +65,7 @@ const RegForm = (props) => {
 
    const returnData = await registerNewAccount.json();
     console.log(returnData)
+    Router.push('/signup/signupComplete')
   };
 
   const checkEmailHandler = (el) => {

@@ -1,12 +1,15 @@
 import classes from "./SignUpAftermath.module.css";
 import Link from "next/link";
+import { failedSvg, successfulSvg } from "@/styles/svgIcons";
 
 const SignUpAftermath = (props) => {
+
+  console.log(failedSvg, successfulSvg)
   const text = props.successful
     ? "Sign up was successful. Proceed to sign in "
     : "For some reason, we failed to sign you up. Go back to the HomePage?";
-  const svgSrc = props.successful ? "" : "";
-  const pickedLink = props.successful ? "/login" : "";
+  const svgSrc = props.successful ? successfulSvg : failedSvg
+  const pickedLink = props.successful ? "/login" : "/";
   const linkText = props.successful ? "Proceed to Log In" : "Back to HomePage";
 
   return (
