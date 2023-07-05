@@ -4,7 +4,7 @@ import { failedSvg, successfulSvg } from "@/styles/svgIcons";
 
 const SignUpAftermath = (props) => {
 
-  console.log(failedSvg, successfulSvg)
+  console.log(props.message)
   const text = props.successful
     ? "Sign up was successful. Proceed to sign in "
     : "For some reason, we failed to sign you up. Go back to the HomePage?";

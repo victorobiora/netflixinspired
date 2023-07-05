@@ -3,11 +3,11 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const createEmail = createSlice({
   name: "email",
   initialState: {
-    setEmail: "",
+    signUpSucessful: null,
   },
   reducers: {
-    addEmail(state, action){
-      state.setEmail = action.payload
+    updateEmailState(state, action){
+      state.signUpSucessful = action.payload
     }
   },
 });

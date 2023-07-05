@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       );
         res.status(200).json({ userCredentials: createNewUser, body: req.body });
     } catch (error) {
-      res.status(501).json({ error: error, data:req.body });
+      throw new Error ({ error: error })
     }
   }
 }
