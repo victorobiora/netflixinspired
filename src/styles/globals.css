@@ -115,6 +115,20 @@
   color: rgb(51, 51, 51)
 }
 
+#login_page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  ), url('https://assets.nflxext.com/ffe/siteui/vlv3/ce221d7a-8901-41d9-b726-3ea2efe3a650/ce2d99eb-fa7b-4ba8-9630-7b881e3544a1/NG-en-20230703-popsignuptwoweeks-perspective_alpha_website_medium.jpg');
+}
+
 html,
 body {
   max-width: 100vw;

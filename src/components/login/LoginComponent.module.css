@@ -1,0 +1,80 @@
+.navBar {
+  padding: 1rem;
+  align-self: flex-start;
+}
+
+.navBar h1 {
+  color: #e50914;
+  font-size: 3.5rem;
+}
+
+.container {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 380px;
+  max-width: 400px;
+  text-align: left;
+  min-height: 550px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.container > h1 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container form > input {
+  margin: 0.5rem 0;
+  height: 3.4rem;
+  padding-left: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgb(51, 51, 51);
+}
+
+.container form label {
+  font-weight: normal;
+  font-size: 17px;
+}
+
+.register {
+  display: block;
+  height: 4.4rem;
+  width: 100%;
+  background-color: #e50914;
+  padding: 1rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  border-radius: 0.4rem;
+  border-color: transparent;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.notAllowed {
+  cursor: not-allowed;
+  background-color: rgb(51, 51, 51);
+}
+
+.new-sign-up {
+  color: rgb(115, 115, 115);
+  font-weight: normal;
+  margin-top: 1rem;
+}
+
+.new-sign-up h1 {
+    display: inline;
+    color: rgb(255, 255, 255);
+    margin-left: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.new-sign-up-paragraph {
+    margin: 0.5rem 0;
+}
