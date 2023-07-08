@@ -10,9 +10,6 @@ const BrowseComponent = (props) => {
 
   const storeCategories = [...fetchedList];
   const picked = {categoryName: "My List", results: list}
-  console.log(list)
-  console.log(fetchedList)
-  console.log(storeCategories);
 
   return (
     <div className={classes.page}>

@@ -44,7 +44,7 @@ const RegForm = (props) => {
       });
 
       const returnData = await registerNewAccount.json();
-      console.log(returnData.status);
+      console.log(returnData);
       dispatch(
         emailActions.updateEmailState({
           success: true,

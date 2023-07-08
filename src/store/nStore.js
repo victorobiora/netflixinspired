@@ -6,9 +6,21 @@ const createEmail = createSlice({
     signUpSucessful: null,
   },
   reducers: {
-    updateEmailState(state, action){
-      state.signUpSucessful = action.payload
-    }
+    updateEmailState(state, action) {
+      state.signUpSucessful = action.payload;
+    },
+  },
+});
+
+const isLoggedIn = createSlice({
+  name: "isLoggedIn",
+  initialState: {
+    success: null,
+  },
+  reducers: {
+    updateIsLoggedInState(state, action) {
+      state.success = action.payload
+    },
   },
 });
 
@@ -57,11 +69,13 @@ const myList = createSlice({
 
 export const listActions = myList.actions;
 export const emailActions = createEmail.actions;
+export const isLoggedInActions = isLoggedIn.actions;
 
 const store = configureStore({
   reducer: {
     myList: myList.reducer,
-    email: createEmail.reducer
+    email: createEmail.reducer,
+    isLoggedIn: isLoggedIn.reducer
   },
 });
 

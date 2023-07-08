@@ -64,4 +64,8 @@
   .featureDetails {
     padding-left: 1rem;
   }
+
+  .title {
+    font-size: 1.7rem;
+  }
 }

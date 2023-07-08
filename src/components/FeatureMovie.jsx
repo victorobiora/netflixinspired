@@ -2,7 +2,6 @@ import classes from "./FeatureMovie.module.css";
 
 const FeatureMovie = ({ deets }) => {
 
-  //<div className={classes.text}>{deets.overview}</div>
   return (
     <section
       className={classes.featureContainer}

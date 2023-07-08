@@ -2,16 +2,17 @@ import { useRouter } from "next/router";
 import { errorElement } from "@/styles/svgIcons";
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useRef, useState } from "react";
+import { isLoggedInActions } from "@/store/nStore";
 import Link from "next/link";
 import classes from "./LoginComponent.module.css";
 
 const LoginComponent = (props) => {
   const dispatch = useDispatch();
   const passwordValue = useRef();
-  const [emailValue, setEmailValue] = useState(
-    useSelector((state) => state.email.setEmail)
-  );
+  const [emailValue, setEmailValue] = useState("");
   const Router = useRouter();
+  const isLoggedInStatus = useSelector((state) => state.isLoggedIn.success);
+  console.log(isLoggedInStatus);
   const [emailCorrect, setEmailCorrect] = useState({
     state: null,
     message: "",
@@ -25,6 +26,7 @@ const LoginComponent = (props) => {
 
   const loginHandler = async (el) => {
     el.preventDefault();
+    console.log(passwordValue.current.value);
     setIsSubmitting(true);
     console.log({
       email: emailValue,
@@ -32,7 +34,7 @@ const LoginComponent = (props) => {
     });
 
     try {
-      const registerNewAccount = await fetch("/api/registernew", {
+      const loginWithEmailandPassword = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -41,18 +43,15 @@ const LoginComponent = (props) => {
         }),
       });
 
-      const returnData = await registerNewAccount.json();
-      console.log(returnData.status);
-      dispatch(
-        emailActions.updateEmailState({
-          success: true,
-          message: returnData.userCredentials,
-        })
-      );
-      Router.push("/signup/signupComplete");
+      const returnData = await loginWithEmailandPassword.json();
+      console.log(returnData);
+      
+      dispatch(isLoggedInActions.updateIsLoggedInState(true));
+      Router.push("/browse");
     } catch (err) {
-      dispatch(emailActions.updateEmailState({ success: false }));
-      Router.push("/signup/signupComplete");
+      console.log(err);
+      dispatch(isLoggedInActions.updateIsLoggedInState(false));
+      Router.push("/login");
     }
   };
 
@@ -89,7 +88,7 @@ const LoginComponent = (props) => {
 
   const checkPasswordHandler = (el) => {
     const val = el.target.value;
-
+    console.log(val);
     if (val.length <= 5) {
       setPasswordCorrect({
         state: false,
@@ -108,6 +107,11 @@ const LoginComponent = (props) => {
         </Link>
       </div>
       <section className={classes.container}>
+        {isLoggedInStatus === false && (
+          <div className={classes.incorrectDetails}>
+            The E-mail or the password is incorrect. Try again.
+          </div>
+        )}
         <h1>Sign In</h1>
         <form>
           <input
