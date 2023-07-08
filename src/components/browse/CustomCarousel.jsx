@@ -8,7 +8,7 @@ export default function CustomCarousel({ carouselData, isSearch }) {
   return (
     <div
       className={`${classes.parentContainer} ${
-        isSearch ? classes.addContainerHeight :  ""
+        isSearch ? classes.addContainerHeight : ""
       }`}
     >
       <h2>{carouselData.categoryName}</h2>
@@ -22,8 +22,9 @@ export default function CustomCarousel({ carouselData, isSearch }) {
             return;
           } else {
             return (
-              <Link href={`${item.id}`} key={Math.random() * 400000}>
+              <div>
                 <CarouselItem
+                  key={Math.random() * 400000}
                   carouselCategory={carouselData.categoryName}
                   originalCategoryName={item.originalCategoryName}
                   name={item.title || item.name}
@@ -35,7 +36,7 @@ export default function CustomCarousel({ carouselData, isSearch }) {
                   genreIDs={item["genre_ids"] || item.genreIDs}
                   hasBeenAdded={item.hasBeenAdded}
                 />
-              </Link>
+              </div>
             );
           }
         })}
