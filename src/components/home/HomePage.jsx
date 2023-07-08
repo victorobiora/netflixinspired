@@ -6,6 +6,7 @@ import HomeFooter from "./HomeFooter";
 const HomePage = (props) => {
   return (
     <main className={styles.Homepage}>
+
       <RegisterSection />
       <HomeContainer>
         <div className={styles.imageDiv}>

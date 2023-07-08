@@ -2,14 +2,13 @@ import SearchResults from "@/components/search/SearchResults";
 import { options } from "../browse";
 import axios from "axios";
 import { Fragment } from "react";
-import ErrorComponent from "@/components/ErrorComponent";
+import ErrorComponent from "@/components/general/ErrorComponent";
 
 const searchPage = (props) => {
-
   return (
     <Fragment>
       {props.error && <ErrorComponent error={props.error} />}
-   {props.data && <SearchResults />}
+      {props.data && <SearchResults />}
     </Fragment>
   );
 };
@@ -27,7 +26,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const searchData = context.params.searchQuery;
-  
+
   try {
     const getResults = await axios.request(
       options(`https://api.themoviedb.org/3/search/tv?query=${searchData}`)

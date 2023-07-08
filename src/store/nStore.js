@@ -4,11 +4,15 @@ const createEmail = createSlice({
   name: "email",
   initialState: {
     signUpSucessful: null,
+    setEmail: ''
   },
   reducers: {
     updateEmailState(state, action) {
       state.signUpSucessful = action.payload;
     },
+    addEmail(state, action){
+      state.setEmail = action.payload
+    }
   },
 });
 

@@ -11,6 +11,30 @@
   background-position: right 60%;
 }
 
+.navBar {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navBar h1 {
+  color: #e50914;
+  font-size: 2.7rem;
+}
+
+.signIn {
+  background-color: #e50914;
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  font-style: italic;
+  padding: 0.3rem;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+}
+
+
 .regDetails {
   text-align: center;
   padding-top: 25%;
@@ -74,8 +98,8 @@
   }
 
   .watch,
-.watch2 {
+  .watch2 {
     font-size: 1rem;
     font-weight: 500;
-}
+  }
 }

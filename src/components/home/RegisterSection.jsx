@@ -3,7 +3,9 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { emailActions } from "@/store/nStore";
-import { errorElement } from "../signUp/RegForm";
+import { errorElement } from "../../styles/svgIcons";
+import Link from "next/link";
+
 
 const RegisterSection = (props) => {
   const router = useRouter();
@@ -60,6 +62,14 @@ const RegisterSection = (props) => {
 
   return (
     <div className={styles.regSection}>
+      <div className={styles.navBar}>
+        <Link href="/">
+          <h1>NETFLIX</h1>
+        </Link>
+        <Link href='/login' className={styles.signIn}>
+            Log In
+        </Link>
+      </div>
       <div className={styles.regDetails}>
         <h1>Unlimited movies, TV shows, and more</h1>
         <p className={styles.watch}>Watch anywhere. Cancel anytime.</p>

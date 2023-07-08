@@ -75,6 +75,7 @@
 
 .playMovie:hover::after {
   content: "Play";
+  margin-left: 0.8rem;
 }
 
 .toggleMyList {

@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       const createNewUser = await createUserWithEmailAndPassword(
         auth,
         req.body.email,
-        req.body.email
+        req.body.password
       );
         res.status(200).json({ userCredentials: createNewUser, body: req.body });
     } catch (error) {

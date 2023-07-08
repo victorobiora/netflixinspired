@@ -3,6 +3,7 @@ import FeatureMovie from "./FeatureMovie";
 import CustomCarousel from "./CustomCarousel";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";
+import NavBar from "../general/NavBar";
 
 const BrowseComponent = (props) => {
   const list = useSelector((state) => state.myList.selectedLists);
@@ -13,6 +14,7 @@ const BrowseComponent = (props) => {
 
   return (
     <div className={classes.page}>
+      <NavBar/>
       <FeatureMovie deets={props.featured} />
       {storeCategories.map((el) => {
         return <CustomCarousel carouselData={el} key={el.categoryName} />;

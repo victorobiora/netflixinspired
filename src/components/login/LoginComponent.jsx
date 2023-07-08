@@ -3,6 +3,7 @@ import { errorElement } from "@/styles/svgIcons";
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useRef, useState } from "react";
 import { isLoggedInActions } from "@/store/nStore";
+import { TailSpin } from "react-loader-spinner";
 import Link from "next/link";
 import classes from "./LoginComponent.module.css";
 
@@ -45,12 +46,13 @@ const LoginComponent = (props) => {
 
       const returnData = await loginWithEmailandPassword.json();
       console.log(returnData);
-      
+
       dispatch(isLoggedInActions.updateIsLoggedInState(true));
       Router.push("/browse");
     } catch (err) {
       console.log(err);
       dispatch(isLoggedInActions.updateIsLoggedInState(false));
+      setIsSubmitting(false);
       Router.push("/login");
     }
   };
@@ -109,7 +111,8 @@ const LoginComponent = (props) => {
       <section className={classes.container}>
         {isLoggedInStatus === false && (
           <div className={classes.incorrectDetails}>
-            The E-mail or the password is incorrect. Try again.
+            Tough Luck! It's either the Email/password is incorrect or you
+            have not signed up at all. Try again.
           </div>
         )}
         <h1>Sign In</h1>
@@ -138,7 +141,19 @@ const LoginComponent = (props) => {
               totalState ? "" : classes.notAllowed
             }`}
           >
-            Sign In
+            {isSubmitting && (
+              <div className={classes.spinner}>
+                <TailSpin
+                  height="30"
+                  width="30"
+                  color="#fff"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  visible={true}
+                />
+              </div>
+            )}
+            {!isSubmitting && <div>Sign In </div>}
           </button>
         </form>
 

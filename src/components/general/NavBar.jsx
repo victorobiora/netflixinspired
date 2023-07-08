@@ -39,10 +39,6 @@ const NavBar = (props) => {
         </Link>
         <ul className={classes.navBarDeets}>
           <li>
-          <Link href='/'>Home</Link>
-          </li>
-         
-          <li>
           <Link href='/browse/my-list'>My List</Link>
           </li>
           <li>
@@ -51,10 +47,9 @@ const NavBar = (props) => {
         </ul>
       </div>
       <div className={classes.profileDeets}>
-        <Link href='/search/thuin'>Search</Link>
+        <Link href='/search/avatar'>Search</Link>
         <Link href='/'>{props.signedInName}</Link>
-        <Link href='/'>Notifs</Link>
-        <Link href='/'> Profile</Link>
+        <Link href='/login'>Log Out</Link>
       </div>
     </section>
   );

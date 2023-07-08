@@ -1,9 +1,11 @@
-import BrowseComponent from "@/components/BrowseComponent";
+import BrowseComponent from "@/components/browse/BrowseComponent";
+import styles from "../../components/browse/BrowseComponent.module.css";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { listActions } from "@/store/nStore";
 import { useSelector } from "react-redux";
+import Protected from "@/components/general/Protected";
 
 const browsePage = (props = null) => {
   const dispatch = useDispatch();
@@ -41,7 +43,11 @@ const browsePage = (props = null) => {
     }
   }, []);
 
-  return <BrowseComponent featured={props.featured} />;
+  return (
+    <Protected>
+      <BrowseComponent featured={props.featured} />
+    </Protected>
+  );
 };
 
 export default browsePage;
