@@ -15,7 +15,7 @@ const RegForm = (props) => {
   );
   const Router = useRouter();
   const [emailCorrect, setEmailCorrect] = useState({
-    state: null,
+    state: true,
     message: "",
   });
   const [passwordCorrect, setPasswordCorrect] = useState({
@@ -59,9 +59,9 @@ const RegForm = (props) => {
   };
 
   const checkEmailHandler = (el) => {
-    const val = el.target.value;
+   const val = emailValue
 
-    setEmailValue(val);
+    setEmailValue(el.target.value);
     // the second argument in the includes method asks from javascript should start counting from
 
     if (val.length <= 4) {
@@ -93,6 +93,7 @@ const RegForm = (props) => {
     const val = el.target.value;
 
     if (val.length <= 5) {
+
       setPasswordCorrect({
         state: false,
         message: "Password cannot be less than 6 characters",
