@@ -12,7 +12,8 @@
     padding: 1rem 2rem;
     padding-left: 3.5rem;
     display: flex;
-    background-color: transparent;
+    background-color: #141414;
+    opacity: 0.9;
     justify-content: space-between;
     color: #e5e5e5;
 }

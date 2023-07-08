@@ -2,7 +2,7 @@
   height: 42rem;
   width: 100%;
   background-size: cover;
-  background-position: bottom 60%;
+
 }
 
 .featureDetails {
@@ -61,6 +61,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .featureContainer {
+    background-position: left 70%;
+  }
+
   .featureDetails {
     padding-left: 1rem;
   }
