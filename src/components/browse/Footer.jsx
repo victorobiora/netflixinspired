@@ -111,5 +111,3 @@ const Footer = (props) => {
 
 export default Footer;
 
-//<a href="https://www.flaticon.com/free-icons/facebook" title="facebook icons">Facebook icons created by Enamo Studios - Flaticon</a>
-//

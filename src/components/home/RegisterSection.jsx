@@ -23,7 +23,7 @@ const RegisterSection = (props) => {
     if (val.length <= 4) {
       setEmailCorrect({
         state: false,
-        message: "email cannot be less than 5 characters",
+        message: "E-mail cannot be less than 5 characters",
       });
     } else if (val.length > 4 && val.includes(`@`) === false) {
       setEmailCorrect({ state: false, message: "Please enter a valid email" });

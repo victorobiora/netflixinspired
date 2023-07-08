@@ -6,7 +6,7 @@ const signupComplete = () => {
 
   return (
     <section id="signup-page">
-     <SignUpAftermath successful={isEmailAdded.success} message={isEmailAdded.message}/>
+     <SignUpAftermath successful={isEmailAdded}/>
     </section>
   ); 
 };
