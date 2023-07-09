@@ -22,9 +22,8 @@ export default function CustomCarousel({ carouselData, isSearch }) {
             return;
           } else {
             return (
-              <div>
+              <div key={Math.random() * 400000}>
                 <CarouselItem
-                  key={Math.random() * 400000}
                   carouselCategory={carouselData.categoryName}
                   originalCategoryName={item.originalCategoryName}
                   name={item.title || item.name}

@@ -3,13 +3,14 @@ import { options } from "../browse";
 import axios from "axios";
 import { Fragment } from "react";
 import ErrorComponent from "@/components/general/ErrorComponent";
-
-const searchPage = (props) => {
-  return (
-    <Fragment>
+/*<Fragment>
       {props.error && <ErrorComponent error={props.error} />}
       {props.data && <SearchResults />}
-    </Fragment>
+    </Fragment>*/
+const searchPage = (props) => {
+  console.log(props)
+  return (
+    null
   );
 };
 
@@ -26,31 +27,21 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const searchData = context.params.searchQuery;
-
+  
   try {
     const getResults = await axios.request(
-      options(`https://api.themoviedb.org/3/search/tv?query=${searchData}`)
-    );
-    if (getResults.ok) {
+      options(`https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(searchData)}`)
+       );
       const data = getResults.data;
       return {
         props: {
           data,
-        },
-      };
-    } else if (response.status === 404) {
-      return {
-        props: {
-          error: { statusCode: 404, message: "Item not found" },
-        },
-      };
-    } else {
-      throw new Error("An error occurred while processing the request");
-    }
+        }
+      }
   } catch (err) {
     return {
       props: {
-        error: { statusCode: 500, message: err.message },
+        error: { statusCode: 500, message: err.message, s: searchData },
       },
     };
   }
