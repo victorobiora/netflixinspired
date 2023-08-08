@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import NavBar from "../general/NavBar";
 
 const SearchResults = (props) => {
-  const fetchedList = useSelector((state) => state.myList.fetchedLists);
+  const searchList = useSelector((state) => state.myList.searchList);
   /* const formatArrayResults = props.data.results.map((el) => {
         return {
           ...el,
@@ -12,19 +12,20 @@ const SearchResults = (props) => {
           originalCategoryName: category.categoryName,
         };
       });*/
-  console.log(fetchedList);
-  const car = {
-    ...fetchedList[0],
-  };
-
-  console.log(car);
+  console.log(searchList);
 
   return (
     <Fragment>
       <NavBar />
-      <CustomCarousel carouselData={car} isSearch={true}></CustomCarousel>
+      <CustomCarousel carouselData={{
+        categoryName: 'Search Results',
+        results: searchList
+      }} isSearch={true}></CustomCarousel>
     </Fragment>
   );
 };
 
 export default SearchResults;
+/*(
+    
+  );*/

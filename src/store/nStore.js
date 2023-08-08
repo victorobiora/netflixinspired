@@ -4,15 +4,15 @@ const createEmail = createSlice({
   name: "email",
   initialState: {
     signUpSucessful: null,
-    setEmail: ''
+    setEmail: "",
   },
   reducers: {
     updateEmailState(state, action) {
       state.signUpSucessful = action.payload;
     },
-    addEmail(state, action){
-      state.setEmail = action.payload
-    }
+    addEmail(state, action) {
+      state.setEmail = action.payload;
+    },
   },
 });
 
@@ -23,8 +23,11 @@ const isLoggedIn = createSlice({
   },
   reducers: {
     updateIsLoggedInState(state, action) {
-      state.success = action.payload
+      state.success = action.payload;
     },
+    nullLoggedInState(state, action) {
+      state.success = null
+    }
   },
 });
 
@@ -33,10 +36,14 @@ const myList = createSlice({
   initialState: {
     fetchedLists: [],
     selectedLists: [],
+    searchList: [],
   },
   reducers: {
     addToFetchedLists(state, action) {
       state.fetchedLists = action.payload;
+    },
+    addToSearchList(state, action) {
+      state.searchList = action.payload;
     },
     addOrRemoveFromList(state, action) {
       if (state.selectedLists.length > 0) {
@@ -46,7 +53,7 @@ const myList = createSlice({
         if (index === -1) {
           state.selectedLists.push({ ...action.payload, hasBeenAdded: true });
         } else {
-          //if there is an index already, that means we remove it from the lists
+          //if there is an index already, that means we remove it from the list
           state.selectedLists = state.selectedLists.filter(
             (el) => el.id !== state.selectedLists[index].id
           );
@@ -54,7 +61,7 @@ const myList = createSlice({
       } else {
         state.selectedLists.push({ ...action.payload, hasBeenAdded: true });
       }
-      //we then change the hasBeenAdded state from the fetchedLists
+      //we then update the hasBeenAdded state from the fetchedLists
       const selectedArrayIndex = state.fetchedLists.findIndex(
         (el) => el.categoryName === action.payload.originalCategoryName
       );
@@ -79,7 +86,7 @@ const store = configureStore({
   reducer: {
     myList: myList.reducer,
     email: createEmail.reducer,
-    isLoggedIn: isLoggedIn.reducer
+    isLoggedIn: isLoggedIn.reducer,
   },
 });
 

@@ -3,14 +3,30 @@ import { options } from "../browse";
 import axios from "axios";
 import { Fragment } from "react";
 import ErrorComponent from "@/components/general/ErrorComponent";
-/*<Fragment>
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { listActions } from "@/store/nStore";
+
+const searchPage = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const formatArrayResults = props.data.results.map((el) => {
+      return {
+        ...el,
+        hasBeenAdded: false,
+        originalCategoryName: "My List",
+      };
+    });
+    dispatch(listActions.addToSearchList(formatArrayResults));
+  }, []);
+
+  console.log(props);
+  return (
+    <Fragment>
       {props.error && <ErrorComponent error={props.error} />}
       {props.data && <SearchResults />}
-    </Fragment>*/
-const searchPage = (props) => {
-  console.log(props)
-  return (
-    null
+    </Fragment>
   );
 };
 
@@ -27,17 +43,21 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const searchData = context.params.searchQuery;
-  
+
   try {
     const getResults = await axios.request(
-      options(`https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(searchData)}`)
-       );
-      const data = getResults.data;
-      return {
-        props: {
-          data,
-        }
-      }
+      options(
+        `https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(
+          searchData
+        )}`
+      )
+    );
+    const data = getResults.data;
+    return {
+      props: {
+        data,
+      },
+    };
   } catch (err) {
     return {
       props: {

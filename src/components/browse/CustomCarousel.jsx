@@ -1,9 +1,12 @@
 import CarouselItem from "./CarouselItem";
 import classes from "./CustomCarousel.module.css";
-import Link from "next/link";
 
 export default function CustomCarousel({ carouselData, isSearch }) {
   //title, id, poster_path, release_date, vote_average, overview, genre_ids
+
+  if(carouselData.results.length === 0){
+    return null
+  }
 
   return (
     <div
