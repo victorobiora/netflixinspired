@@ -46,3 +46,11 @@
     position: relative;
     bottom: 0.4rem;
 }
+
+
+@media only screen and (max-width: 767px){
+    
+.navBarDeets, .profileDeets{
+    display: none;
+}
+}
