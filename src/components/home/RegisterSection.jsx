@@ -90,7 +90,7 @@ const RegisterSection = (props) => {
             disabled={emailCorrect.state === false}
             onClick={startRegistrationHandler}
           >
-            <h2>{`Get Started > `} </h2>
+            <h2>{`Get Started`} </h2>
           </button>
         </form>
       </div>
