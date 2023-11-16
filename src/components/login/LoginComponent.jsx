@@ -73,13 +73,13 @@ const LoginComponent = (props) => {
     } else if (
       val.length > 4 &&
       val.includes(`@`) &&
-      val.includes(`.`, val.indexOf(`@`)) === false
+      val.includes(`.`) === false
     ) {
       setEmailCorrect({ state: false, message: "Please enter a valid email" });
     } else if (
       val.length > 4 &&
       val.includes(`@`) &&
-      val.includes(`.`, val.indexOf(`@`)) &&
+      val.includes(`.`) &&
       val.lastIndexOf(".") === val.length - 1
     ) {
       setEmailCorrect({ state: false, message: "Please enter a valid email" });
@@ -111,8 +111,8 @@ const LoginComponent = (props) => {
       <section className={classes.container}>
         {isLoggedInStatus === false && (
           <div className={classes.incorrectDetails}>
-            Tough Luck! It's either the Email/password is incorrect or you
-            have not signed up at all. Try again.
+            Tough Luck! It's either the Email/password is incorrect or you have
+            not signed up at all. Try again.
           </div>
         )}
         <h1>Sign In</h1>
