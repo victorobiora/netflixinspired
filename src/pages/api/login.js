@@ -9,9 +9,10 @@ export default async function handler(req, res) {
         req.body.email,
         req.body.password
       );
-        res.status(200).json({ userCredentials: signInUser, body: req.body });
+
+      res.status(200).json({ userCredentials: signInUser, body: req.body });
     } catch (error) {
-      throw new Error ({ error: error })
+      throw new Error({ error: error });
     }
   }
 }

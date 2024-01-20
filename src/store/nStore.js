@@ -45,6 +45,9 @@ const myList = createSlice({
     addToSearchList(state, action) {
       state.searchList = action.payload;
     },
+    clearList(state, action){
+      state.fetchedLists = []
+    },
     addOrRemoveFromList(state, action) {
       if (state.selectedLists.length > 0) {
         const index = state.selectedLists.findIndex(

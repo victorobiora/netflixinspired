@@ -2,10 +2,13 @@ import Link from "next/link";
 import classes from "./NavBar.module.css";
 import { useRef } from "react";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { listActions } from "@/store/nStore";
 
 const NavBar = (props) => {
   const searchValue = useRef();
   const Router = useRouter();
+  const dispatch = useDispatch();
 
   const searchHandler = el => {
     el.preventDefault()
@@ -31,7 +34,12 @@ const NavBar = (props) => {
           <input className={classes.searchInput} type="text" placeholder="Search" ref={searchValue}/>
         </form>
         <Link href="/">{props.signedInName}</Link>
-        <Link href="/login">Log Out</Link>
+        <Link href="/login" onClick={(event) => {
+          
+           event.preventDefault()
+           dispatch(listActions.clearList())       
+           Router.push('/login')
+        }}>Log Out</Link>
       </div>
     </section>
   );
