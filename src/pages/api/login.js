@@ -1,3 +1,4 @@
+
 import { auth } from "@/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -16,3 +17,4 @@ export default async function handler(req, res) {
     }
   }
 }
+

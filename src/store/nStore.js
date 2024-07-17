@@ -1,3 +1,4 @@
+
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const createEmail = createSlice({
@@ -44,9 +45,6 @@ const myList = createSlice({
     },
     addToSearchList(state, action) {
       state.searchList = action.payload;
-    },
-    clearList(state, action){
-      state.fetchedLists = []
     },
     addOrRemoveFromList(state, action) {
       if (state.selectedLists.length > 0) {

@@ -1,3 +1,4 @@
+
 import classes from "./BrowseComponent.module.css";
 import FeatureMovie from "./FeatureMovie";
 import CustomCarousel from "./CustomCarousel";
@@ -11,8 +12,6 @@ const BrowseComponent = (props) => {
 
   const storeCategories = [...fetchedList];
   const picked = {categoryName: "My List", results: list}
-
-  console.log(props.featured)
 
   return (
     <div className={classes.page}>
