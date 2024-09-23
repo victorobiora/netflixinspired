@@ -21,7 +21,7 @@ const searchPage = (props) => {
     dispatch(listActions.addToSearchList(formatArrayResults));
   }, []);
 
-  console.log(props);
+
   return (
     <Fragment>
       {props.error && <ErrorComponent error={props.error} />}
